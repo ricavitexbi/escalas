@@ -63,19 +63,9 @@
             margin-top: 0.25rem;
         }
 
-        .breadcrumb a {
-            color: #2196F3;
-            text-decoration: none;
-        }
-
-        .header-center {
+        .status-section {
             display: flex;
             align-items: center;
-            gap: 2rem;
-        }
-
-        .status-indicators {
-            display: flex;
             gap: 1rem;
         }
 
@@ -87,6 +77,7 @@
             padding: 0.5rem 1rem;
             border-radius: 20px;
             border: 1px solid rgba(33, 150, 243, 0.3);
+            font-size: 0.9rem;
         }
 
         .status-indicator {
@@ -98,7 +89,6 @@
 
         .status-online { background: #4CAF50; }
         .status-processing { background: #FF9800; }
-        .status-warning { background: #f44336; }
 
         @keyframes pulse {
             0% { opacity: 1; }
@@ -107,15 +97,8 @@
         }
 
         .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
             color: #b0bec5;
-        }
-
-        .quick-actions {
-            display: flex;
-            gap: 0.5rem;
+            text-align: right;
         }
 
         .main-container {
@@ -129,94 +112,89 @@
             backdrop-filter: blur(10px);
             padding: 2rem 1rem;
             border-right: 1px solid rgba(33, 150, 243, 0.3);
-            position: sticky;
-            top: 80px;
-            height: calc(100vh - 80px);
-            overflow-y: auto;
         }
 
-        .nav-section {
+        .nav-title {
+            text-align: center;
+            color: #2196F3;
+            font-weight: 600;
+            font-size: 0.9rem;
             margin-bottom: 2rem;
-        }
-
-        .nav-section-title {
-            font-size: 0.8rem;
-            color: #b0bec5;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-            padding-left: 1rem;
+            padding: 1rem;
+            background: rgba(33, 150, 243, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
         }
 
         .nav-item {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 12px;
+            gap: 1rem;
+            padding: 1.2rem;
+            margin: 0.8rem 0;
+            border-radius: 15px;
             cursor: pointer;
             transition: all 0.3s ease;
             color: #b0bec5;
+            border: 2px solid transparent;
             position: relative;
         }
 
-        .nav-item:hover, .nav-item.active {
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
-            color: white;
-            transform: translateX(5px);
+        .nav-item:hover {
+            background: linear-gradient(135deg, rgba(33, 150, 243, 0.1), rgba(0, 188, 212, 0.1));
+            color: #2196F3;
+            transform: translateX(8px);
+            border-color: rgba(33, 150, 243, 0.3);
         }
 
-        .nav-item.active::before {
-            content: '';
+        .nav-item.active {
+            background: linear-gradient(135deg, #2196F3, #00BCD4);
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.4);
+            border-color: #2196F3;
+        }
+
+        .nav-item.active::after {
+            content: 'ATIVO';
             position: absolute;
-            left: -1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 70%;
-            background: #2196F3;
-            border-radius: 2px;
+            right: 1rem;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            font-weight: 600;
         }
 
         .nav-icon {
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             background: currentColor;
             mask-size: contain;
             mask-repeat: no-repeat;
-        }
-
-        .notification-badge {
-            background: #f44336;
-            color: white;
-            font-size: 0.7rem;
-            padding: 0.1rem 0.4rem;
-            border-radius: 10px;
-            margin-left: auto;
+            flex-shrink: 0;
         }
 
         .dashboard-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z'/%3E%3C/svg%3E"); }
         .users-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M16 7c0-2.21-1.79-4-4-4S8 4.79 8 7s1.79 4 4 4 4-1.79 4-4zm-4 7c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E"); }
-        .schedule-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3E%3C/svg%3E"); }
         .optimization-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/%3E%3C/svg%3E"); }
-        .transport-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11C5.84 5 5.28 5.42 5.08 6.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-.83 0-1.5-.67-1.5-1.5S5.67 13 6.5 13s1.5.67 1.5 1.5S7.33 16 6.5 16zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zM5 11l1.5-4.5h11L19 11H5z'/%3E%3C/svg%3E"); }
-        .analytics-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z'/%3E%3C/svg%3E"); }
-        .reports-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z'/%3E%3C/svg%3E"); }
-        .settings-icon { mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.81c-0.04-0.24-0.24-0.41-0.48-0.41 h-3.84c-0.24,0-0.43,0.17-0.47,0.41L9.25,5.35C8.66,5.59,8.12,5.92,7.63,6.29L5.24,5.33c-0.22-0.08-0.47,0-0.59,0.22L2.74,8.87 C2.62,9.08,2.66,9.34,2.86,9.48l2.03,1.58C4.84,11.36,4.8,11.69,4.8,12s0.02,0.64,0.07,0.94l-2.03,1.58 c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.54 c0.05,0.24,0.24,0.41,0.48,0.41h3.84c0.24,0,0.44-0.17,0.47-0.41l0.36-2.54c0.59-0.24,1.13-0.56,1.62-0.94l2.39,0.96 c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M12,15.6c-1.98,0-3.6-1.62-3.6-3.6 s1.62-3.6,3.6-3.6s3.6,1.62,3.6,3.6S13.98,15.6,12,15.6z'/%3E%3C/svg%3E"); }
 
         .content {
             padding: 2rem;
             background: rgba(15, 20, 25, 0.5);
-            min-height: calc(100vh - 80px);
+            overflow-y: auto;
         }
 
         .page-section {
             display: none;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
         .page-section.active {
             display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .page-header {
@@ -227,7 +205,7 @@
         }
 
         .page-title {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ffffff;
         }
@@ -238,13 +216,8 @@
             margin-top: 0.5rem;
         }
 
-        .header-actions {
-            display: flex;
-            gap: 1rem;
-        }
-
         .btn {
-            padding: 0.75rem 1.5rem;
+            padding: 0.8rem 1.6rem;
             border-radius: 12px;
             border: none;
             cursor: pointer;
@@ -331,7 +304,7 @@
         }
 
         .stat-value {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 0.5rem;
@@ -363,50 +336,13 @@
         }
 
         .widget-title {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 1rem;
             color: #ffffff;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .widget-content {
-            color: #e0e0e0;
-        }
-
-        .chart-placeholder {
-            height: 200px;
-            background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(0, 188, 212, 0.1));
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #b0bec5;
-            border: 1px dashed rgba(33, 150, 243, 0.3);
-            margin: 1rem 0;
-        }
-
-        .alert-item {
-            background: rgba(255, 193, 7, 0.1);
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .alert-critical {
-            background: rgba(244, 67, 54, 0.1);
-            border-color: rgba(244, 67, 54, 0.3);
-        }
-
-        .alert-success {
-            background: rgba(76, 175, 80, 0.1);
-            border-color: rgba(76, 175, 80, 0.3);
         }
 
         .table-container {
@@ -432,8 +368,25 @@
             color: #ffffff;
         }
 
-        .table-wrapper {
-            overflow-x: auto;
+        .filters-section {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-input, .filter-select {
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            background: rgba(26, 35, 50, 0.8);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .filter-input:focus, .filter-select:focus {
+            outline: none;
+            border-color: #2196F3;
+            box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.2);
         }
 
         .data-table {
@@ -490,97 +443,102 @@
             border: 1px solid rgba(244, 67, 54, 0.3);
         }
 
-        .quick-access-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        .alert-item {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
             gap: 1rem;
+        }
+
+        .alert-critical {
+            background: rgba(244, 67, 54, 0.1);
+            border-color: rgba(244, 67, 54, 0.3);
+        }
+
+        .alert-success {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+
+        .chart-placeholder {
+            height: 200px;
+            background: linear-gradient(45deg, rgba(33, 150, 243, 0.1), rgba(0, 188, 212, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0bec5;
+            border: 1px dashed rgba(33, 150, 243, 0.3);
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .optimization-controls {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
             margin-bottom: 2rem;
         }
 
-        .quick-access-card {
+        .control-section {
             background: linear-gradient(135deg, rgba(26, 35, 50, 0.8), rgba(33, 150, 243, 0.1));
             backdrop-filter: blur(10px);
             border: 1px solid rgba(33, 150, 243, 0.3);
             border-radius: 16px;
             padding: 1.5rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
-        .quick-access-card:hover {
-            transform: translateY(-5px);
-            border-color: #2196F3;
-            box-shadow: 0 10px 30px rgba(33, 150, 243, 0.3);
+        .parameter-group {
+            margin-bottom: 1rem;
         }
 
-        .quick-access-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #2196F3, #00BCD4);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            z-index: 1000;
-        }
-
-        .modal-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(135deg, rgba(26, 35, 50, 0.95), rgba(33, 150, 243, 0.1));
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(33, 150, 243, 0.3);
-            border-radius: 16px;
-            padding: 2rem;
-            width: 90%;
-            max-width: 800px;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .modal-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #ffffff;
-        }
-
-        .close-btn {
-            background: none;
-            border: none;
+        .parameter-label {
+            display: block;
+            margin-bottom: 0.5rem;
             color: #b0bec5;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 0.5rem;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            font-size: 0.9rem;
         }
 
-        .close-btn:hover {
-            background: rgba(244, 67, 54, 0.2);
-            color: #f44336;
+        .parameter-input, .parameter-select {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 1px solid rgba(33, 150, 243, 0.3);
+            background: rgba(26, 35, 50, 0.8);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: linear-gradient(135deg, #2196F3, #00BCD4);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 1001;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+            font-weight: 600;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+        }
+
+        .notification.warning {
+            background: linear-gradient(135deg, #FF9800, #f57c00);
         }
 
         @media (max-width: 768px) {
@@ -600,18 +558,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .page-header {
-                flex-direction: column;
-                gap: 1rem;
-                align-items: stretch;
-            }
-            
-            .header-actions {
-                justify-content: center;
-            }
-
-            .status-indicators {
-                display: none;
+            .optimization-controls {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -623,85 +571,47 @@
             <div>
                 <h1 class="header-title">Sistema de Otimização de Escalas</h1>
                 <div class="breadcrumb">
-                    <span id="currentBreadcrumb">Dashboard</span>
+                    <span id="currentBreadcrumb">Dashboard Executivo</span>
                 </div>
             </div>
         </div>
         
-        <div class="header-center">
-            <div class="status-indicators">
-                <div class="status-item">
-                    <div class="status-indicator status-online"></div>
-                    <span>IA Ativa</span>
-                </div>
-                <div class="status-item">
-                    <div class="status-indicator status-processing"></div>
-                    <span>Otimizando</span>
-                </div>
-                <div class="status-item">
-                    <div class="status-indicator status-online"></div>
-                    <span>Sistema OK</span>
-                </div>
+        <div class="status-section">
+            <div class="status-item">
+                <div class="status-indicator status-online"></div>
+                <span>IA Ativa</span>
+            </div>
+            <div class="status-item">
+                <div class="status-indicator status-processing"></div>
+                <span>Otimizando</span>
             </div>
         </div>
 
         <div class="user-info">
-            <div class="quick-actions">
-                <button class="btn btn-secondary" onclick="showQuickOptimization()">⚡ Otimização Rápida</button>
-                <button class="btn btn-primary" onclick="showEmergencyMode()">🚨 Modo Emergência</button>
-            </div>
-            <div style="border-left: 1px solid #b0bec5; padding-left: 1rem;">
-                <span>João Silva - Operador</span><br>
-                <small>Hub: Belo Horizonte</small>
-            </div>
+            <div>João Silva - Operador CCO</div>
+            <div style="font-size: 0.8rem; opacity: 0.8;">Hub: Belo Horizonte</div>
         </div>
     </header>
 
     <div class="main-container">
         <nav class="sidebar">
-            <div class="nav-section">
-                <div class="nav-section-title">Principal</div>
-                <div class="nav-item active" data-section="dashboard">
-                    <div class="nav-icon dashboard-icon"></div>
-                    <span>Dashboard</span>
-                </div>
-                <div class="nav-item" data-section="maquinistas">
-                    <div class="nav-icon users-icon"></div>
-                    <span>Maquinistas</span>
-                    <span class="notification-badge">3</span>
-                </div>
-                <div class="nav-item" data-section="escalas">
-                    <div class="nav-icon schedule-icon"></div>
-                    <span>Escalas</span>
-                </div>
-                <div class="nav-item" data-section="otimizacao">
-                    <div class="nav-icon optimization-icon"></div>
-                    <span>Otimização IA</span>
-                </div>
+            <div class="nav-title">
+                🚀 NAVEGAÇÃO PRINCIPAL
             </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Operacional</div>
-                <div class="nav-item" data-section="transportes">
-                    <div class="nav-icon transport-icon"></div>
-                    <span>Transportes</span>
-                </div>
-                <div class="nav-item" data-section="analytics">
-                    <div class="nav-icon analytics-icon"></div>
-                    <span>Analytics</span>
-                </div>
-                <div class="nav-item" data-section="relatorios">
-                    <div class="nav-icon reports-icon"></div>
-                    <span>Relatórios</span>
-                </div>
+            
+            <div class="nav-item active" onclick="showSection('dashboard')">
+                <div class="nav-icon dashboard-icon"></div>
+                <span>Dashboard Executivo</span>
             </div>
-
-            <div class="nav-section">
-                <div class="nav-section-title">Sistema</div>
-                <div class="nav-item" data-section="configuracoes">
-                    <div class="nav-icon settings-icon"></div>
-                    <span>Configurações</span>
-                </div>
+            
+            <div class="nav-item" onclick="showSection('maquinistas')">
+                <div class="nav-icon users-icon"></div>
+                <span>Gestão de Maquinistas</span>
+            </div>
+            
+            <div class="nav-item" onclick="showSection('otimizacao')">
+                <div class="nav-icon optimization-icon"></div>
+                <span>Otimização IA</span>
             </div>
         </nav>
 
@@ -713,7 +623,7 @@
                         <h2 class="page-title">Dashboard Executivo</h2>
                         <p class="page-subtitle">Visão geral do sistema de otimização de escalas</p>
                     </div>
-                    <div class="header-actions">
+                    <div style="display: flex; gap: 1rem;">
                         <button class="btn btn-secondary" onclick="refreshDashboard()">🔄 Atualizar</button>
                         <button class="btn btn-primary" onclick="generateReport()">📊 Relatório</button>
                     </div>
@@ -768,86 +678,611 @@
                 <div class="widget-grid">
                     <div class="widget">
                         <h3 class="widget-title">🚨 Alertas Críticos</h3>
-                        <div class="widget-content">
-                            <div class="alert-item alert-critical">
+                        <div class="alert-item alert-critical">
+                            <div style="font-size: 1.2rem;">🔴</div>
+                            <div>
                                 <strong>Falta Iminente</strong><br>
-                                Trecho BH-VIT: 2 maquinistas em falta para turno noturno
+                                <small>Trecho BH-VIT: 2 maquinistas em falta para turno noturno</small>
                             </div>
-                            <div class="alert-item">
+                        </div>
+                        <div class="alert-item">
+                            <div style="font-size: 1.2rem;">⚠️</div>
+                            <div>
                                 <strong>Horas Extras</strong><br>
-                                5 maquinistas próximos ao limite semanal
+                                <small>5 maquinistas próximos ao limite semanal</small>
                             </div>
-                            <div class="alert-item alert-success">
-                                <strong>Otimização</strong><br>
-                                Economia de R$ 12.400 em transportes hoje
+                        </div>
+                        <div class="alert-item alert-success">
+                            <div style="font-size: 1.2rem;">✅</div>
+                            <div>
+                                <strong>Otimização Ativa</strong><br>
+                                <small>Economia de R$ 12.400 em transportes hoje</small>
                             </div>
                         </div>
                     </div>
 
                     <div class="widget">
                         <h3 class="widget-title">📈 Performance Operacional</h3>
-                        <div class="widget-content">
-                            <div class="chart-placeholder">
-                                [Gráfico de Performance - Últimos 7 dias]
-                            </div>
+                        <div class="chart-placeholder">
+                            Gráfico de Performance - Últimos 7 dias<br>
+                            <small style="opacity: 0.7;">Produtividade: 96.4% | Custos: -18% | Conformidade: 100%</small>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                            <button class="btn btn-primary" onclick="showSection('maquinistas')">👥 Gerir Equipes</button>
+                            <button class="btn btn-success" onclick="showSection('otimizacao')">⚡ Otimizar</button>
                         </div>
                     </div>
 
                     <div class="widget">
                         <h3 class="widget-title">🎯 Metas vs Realizado</h3>
-                        <div class="widget-content">
-                            <div style="margin-bottom: 1rem;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span>Eficiência</span>
-                                    <span>96.4% / 95%</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
-                                    <div style="width: 96.4%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
-                                </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Eficiência</span>
+                                <span style="font-weight: 600;">96.4% / 95%</span>
                             </div>
-                            <div style="margin-bottom: 1rem;">
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span>Economia</span>
-                                    <span>R$ 186K / R$ 150K</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
-                                    <div style="width: 124%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
-                                </div>
+                            <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
+                                <div style="width: 96.4%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
                             </div>
-                            <div>
-                                <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
-                                    <span>Conformidade</span>
-                                    <span>100% / 100%</span>
-                                </div>
-                                <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
-                                    <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
-                                </div>
+                        </div>
+                        <div style="margin-bottom: 1rem;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Economia</span>
+                                <span style="font-weight: 600;">R$ 186K / R$ 150K</span>
+                            </div>
+                            <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
+                                <div style="width: 124%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <span>Conformidade</span>
+                                <span style="font-weight: 600;">100% / 100%</span>
+                            </div>
+                            <div style="height: 8px; background: rgba(33, 150, 243, 0.2); border-radius: 4px;">
+                                <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #4CAF50, #45a049); border-radius: 4px;"></div>
                             </div>
                         </div>
                     </div>
 
                     <div class="widget">
                         <h3 class="widget-title">🔧 Ações Rápidas</h3>
-                        <div class="widget-content">
-                            <div class="quick-access-grid">
-                                <div class="quick-access-card" onclick="switchToSection('otimizacao')">
-                                    <div class="quick-access-icon">⚡</div>
-                                    <div>Otimizar Escalas</div>
-                                </div>
-                                <div class="quick-access-card" onclick="switchToSection('maquinistas')">
-                                    <div class="quick-access-icon">👥</div>
-                                    <div>Gerir Equipes</div>
-                                </div>
-                                <div class="quick-access-card" onclick="switchToSection('transportes')">
-                                    <div class="quick-access-icon">🚛</div>
-                                    <div>Otimizar Rotas</div>
-                                </div>
-                                <div class="quick-access-card" onclick="switchToSection('relatorios')">
-                                    <div class="quick-access-icon">📊</div>
-                                    <div>Relatórios</div>
-                                </div>
-                            </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <button class="btn btn-primary" onclick="quickOptimization()" style="width: 100%;">⚡ Otimização Rápida</button>
+                            <button class="btn btn-warning" onclick="emergencyMode()" style="width: 100%;">🚨 Modo Emergência</button>
+                            <button class="btn btn-secondary" onclick="showSection('maquinistas')" style="width: 100%;">👥 Ver Maquinistas</button>
+                            <button class="btn btn-secondary" onclick="generateReport()" style="width: 100%;">📊 Relatórios</button>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- MAQUINISTAS SECTION -->
+            <div id="maquinistas" class="page-section">
+                <div class="page-header">
+                    <div>
+                        <h2 class="page-title">Gestão de Maquinistas</h2>
+                        <p class="page-subtitle">Controle completo do cadastro e operações dos 847 maquinistas</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-secondary" onclick="exportMaquinistas()">📤 Exportar</button>
+                        <button class="btn btn-primary" onclick="addMaquinista()">+ Novo Maquinista</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Total Maquinistas</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">847</div>
+                        <div class="stat-change positive">+5 este mês</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Disponíveis</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">623</div>
+                        <div class="stat-change positive">73.5% da frota</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Em Operação</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">178</div>
+                        <div class="stat-change">21% da frota</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Afastados</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">14</div>
+                        <div class="stat-change negative">-3 vs semana passada</div>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3 class="table-title">Lista de Maquinistas</h3>
+                        <div class="filters-section">
+                            <input type="text" class="filter-input" placeholder="Buscar por nome..." id="searchInput">
+                            <select class="filter-select" id="statusFilter">
+                                <option value="">Todos os Status</option>
+                                <option value="disponivel">Disponível</option>
+                                <option value="ocupado">Ocupado</option>
+                                <option value="descanso">Descanso</option>
+                            </select>
+                            <select class="filter-select" id="trechoFilter">
+                                <option value="">Todos os Trechos</option>
+                                <option value="BH-VIT">BH-VIT</option>
+                                <option value="VIT-BH">VIT-BH</option>
+                                <option value="BH-SP">BH-SP</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="overflow-x: auto;">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                    <th>Status</th>
+                                    <th>Certificações</th>
+                                    <th>Experiência</th>
+                                    <th>Última Atividade</th>
+                                    <th>Produtividade</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="maquinistasTable">
+                                <tr>
+                                    <td>MAQ-001</td>
+                                    <td>Carlos Silva Santos</td>
+                                    <td><span class="status-badge status-disponivel">Disponível</span></td>
+                                    <td>BH-VIT, VIT-BH, Carga</td>
+                                    <td>8 anos</td>
+                                    <td>2h atrás</td>
+                                    <td>96.2%</td>
+                                    <td>
+                                        <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="viewMaquinista('MAQ-001')">👁 Ver</button>
+                                        <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="scheduleMaquinista('MAQ-001')">📅 Escalar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAQ-002</td>
+                                    <td>Maria Oliveira Costa</td>
+                                    <td><span class="status-badge status-ocupado">Em Operação</span></td>
+                                    <td>BH-SP, Passageiros</td>
+                                    <td>5 anos</td>
+                                    <td>15min atrás</td>
+                                    <td>94.8%</td>
+                                    <td>
+                                        <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="viewMaquinista('MAQ-002')">👁 Ver</button>
+                                        <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" disabled>📅 Ocupado</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAQ-003</td>
+                                    <td>João Pereira Lima</td>
+                                    <td><span class="status-badge status-descanso">Em Descanso</span></td>
+                                    <td>VIT-BH, SP-RJ, Carga, Pass.</td>
+                                    <td>12 anos</td>
+                                    <td>6h atrás</td>
+                                    <td>98.1%</td>
+                                    <td>
+                                        <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="viewMaquinista('MAQ-003')">👁 Ver</button>
+                                        <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" disabled>💤 Descanso</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAQ-004</td>
+                                    <td>Ana Carolina Souza</td>
+                                    <td><span class="status-badge status-disponivel">Disponível</span></td>
+                                    <td>BH-VIT, Carga</td>
+                                    <td>3 anos</td>
+                                    <td>1h atrás</td>
+                                    <td>92.7%</td>
+                                    <td>
+                                        <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="viewMaquinista('MAQ-004')">👁 Ver</button>
+                                        <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="scheduleMaquinista('MAQ-004')">📅 Escalar</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>MAQ-005</td>
+                                    <td>Roberto Ferreira</td>
+                                    <td><span class="status-badge status-disponivel">Disponível</span></td>
+                                    <td>SP-RJ, Passageiros</td>
+                                    <td>7 anos</td>
+                                    <td>45min atrás</td>
+                                    <td>95.4%</td>
+                                    <td>
+                                        <button class="btn btn-secondary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="viewMaquinista('MAQ-005')">👁 Ver</button>
+                                        <button class="btn btn-primary" style="padding: 0.3rem 0.6rem; font-size: 0.8rem;" onclick="scheduleMaquinista('MAQ-005')">📅 Escalar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="widget-grid">
+                    <div class="widget">
+                        <h3 class="widget-title">📊 Distribuição por Certificação</h3>
+                        <div class="chart-placeholder">
+                            Gráfico de Certificações<br>
+                            <small style="opacity: 0.7;">BH-VIT: 287 | VIT-BH: 294 | BH-SP: 189 | SP-RJ: 156</small>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <h3 class="widget-title">⏰ Disponibilidade por Turno</h3>
+                        <div class="chart-placeholder">
+                            Timeline de Disponibilidade<br>
+                            <small style="opacity: 0.7;">Manhã: 245 | Tarde: 189 | Noite: 156 | Madrugada: 89</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OTIMIZAÇÃO SECTION -->
+            <div id="otimizacao" class="page-section">
+                <div class="page-header">
+                    <div>
+                        <h2 class="page-title">Motor de Otimização IA</h2>
+                        <p class="page-subtitle">Algoritmos avançados de programação linear e aprendizado de máquina</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-warning" onclick="runSimulation()">📊 Simular Cenários</button>
+                        <button class="btn btn-success" onclick="optimizeSchedules()">⚡ Otimizar Escalas</button>
+                    </div>
+                </div>
+
+                <div class="optimization-controls">
+                    <div class="control-section">
+                        <h3 style="color: #2196F3; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            🧠 IA Preditiva
+                        </h3>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Período de Previsão</label>
+                            <select class="parameter-select" id="periodoPrevisao">
+                                <option value="7">7 dias</option>
+                                <option value="14" selected>14 dias</option>
+                                <option value="30">30 dias</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Peso Produtividade: <span id="prodValue">80%</span></label>
+                            <input type="range" class="parameter-input" min="0" max="100" value="80" oninput="updateValue('prodValue', this.value + '%')">
+                        </div>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Peso Custos: <span id="costValue">70%</span></label>
+                            <input type="range" class="parameter-input" min="0" max="100" value="70" oninput="updateValue('costValue', this.value + '%')">
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="runPrediction()">🧠 Executar Predição</button>
+                    </div>
+
+                    <div class="control-section">
+                        <h3 style="color: #2196F3; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            ⚙️ Programação Linear
+                        </h3>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Hub/Trecho</label>
+                            <select class="parameter-select" id="hubTrecho">
+                                <option value="all">Todos os Hubs</option>
+                                <option value="bh-vit" selected>BH-VIT</option>
+                                <option value="vit-bh">VIT-BH</option>
+                                <option value="bh-sp">BH-SP</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Prioridade</label>
+                            <select class="parameter-select" id="prioridade">
+                                <option value="custo">Minimizar Custos</option>
+                                <option value="produtividade" selected>Maximizar Produtividade</option>
+                                <option value="equilibrio">Equilibrio</option>
+                            </select>
+                        </div>
+                        <div class="parameter-group">
+                            <label class="parameter-label">Algoritmo</label>
+                            <select class="parameter-select" id="algoritmo">
+                                <option value="simplex">Simplex</option>
+                                <option value="interior" selected>Ponto Interior</option>
+                                <option value="genetico">Algoritmo Genético</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-success" style="width: 100%;" onclick="optimizeSchedules()">⚡ Otimizar</button>
+                    </div>
+                </div>
+
+                <div class="widget-grid">
+                    <div class="widget">
+                        <h3 class="widget-title">📈 Métricas de Otimização</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="color: #b0bec5;">Eficiência Geral</span>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 600;">96.4%</div>
+                                <div style="font-size: 0.8rem; color: #4CAF50;">+3.2% vs manual</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="color: #b0bec5;">Redução Custos</span>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 600;">R$ 24.580</div>
+                                <div style="font-size: 0.8rem; color: #4CAF50;">-18% transporte</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="color: #b0bec5;">Horas Improdutivas</span>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 600;">2.1%</div>
+                                <div style="font-size: 0.8rem; color: #4CAF50;">-67% vs baseline</div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                            <span style="color: #b0bec5;">Conformidade</span>
+                            <div style="text-align: right;">
+                                <div style="font-weight: 600;">100%</div>
+                                <div style="font-size: 0.8rem; color: #4CAF50;">0 passivos</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="widget-title">🚨 Alertas IA</h3>
+                        <div class="alert-item alert-success">
+                            <div style="font-size: 1.2rem;">✅</div>
+                            <div>
+                                <strong>Otimização Concluída</strong><br>
+                                <small>Economia de R$ 24.580 identificada</small>
+                            </div>
+                        </div>
+                        <div class="alert-item">
+                            <div style="font-size: 1.2rem;">⚠️</div>
+                            <div>
+                                <strong>Capacitação Necessária</strong><br>
+                                <small>124 certificados carga pesada</small>
+                            </div>
+                        </div>
+                        <div class="alert-item alert-critical">
+                            <div style="font-size: 1.2rem;">🔴</div>
+                            <div>
+                                <strong>Risco Horas Extras</strong><br>
+                                <small>João P. próximo limite (38/40h)</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="widget-title">📅 Preview da Escala Otimizada</h3>
+                        <div class="chart-placeholder">
+                            Timeline Otimizada - Hub BH-VIT<br>
+                            <small style="opacity: 0.7;">Carlos S.: 06h-14h | Maria O.: 14h-22h | Ana C.: 22h-06h</small>
+                        </div>
+                        <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <button class="btn btn-primary" style="flex: 1;" onclick="applySchedule()">💾 Aplicar Escala</button>
+                            <button class="btn btn-secondary" style="flex: 1;" onclick="exportSchedule()">📄 Exportar</button>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="widget-title">🔧 Restrições Trabalhistas</h3>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="font-size: 0.9rem;">Jornada Máxima (8h)</span>
+                            <span style="background: rgba(76, 175, 80, 0.2); color: #4CAF50; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">✓ OK</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="font-size: 0.9rem;">Intervalo Turnos (11h)</span>
+                            <span style="background: rgba(76, 175, 80, 0.2); color: #4CAF50; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">✓ OK</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid rgba(33, 150, 243, 0.1);">
+                            <span style="font-size: 0.9rem;">Descanso Semanal</span>
+                            <span style="background: rgba(255, 193, 7, 0.2); color: #FFC107; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">⚠ Verificar</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 0.5rem 0;">
+                            <span style="font-size: 0.9rem;">Carros Disponíveis</span>
+                            <span style="background: rgba(76, 175, 80, 0.2); color: #4CAF50; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">12 unidades</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Função principal de navegação
+        function showSection(sectionId) {
+            // Remover classe active de todas as seções
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Mostrar seção selecionada
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Atualizar navegação visual
+            document.querySelectorAll('.nav-item').forEach(nav => {
+                nav.classList.remove('active');
+            });
+            
+            // Ativar item de navegação correspondente
+            event.target.closest('.nav-item').classList.add('active');
+            
+            // Atualizar breadcrumb
+            const sectionNames = {
+                'dashboard': 'Dashboard Executivo',
+                'maquinistas': 'Gestão de Maquinistas', 
+                'otimizacao': 'Motor de Otimização IA'
+            };
+            
+            document.getElementById('currentBreadcrumb').textContent = sectionNames[sectionId];
+            
+            // Notificação de navegação
+            showNotification(`Navegando para: ${sectionNames[sectionId]}`, 'info');
+        }
+
+        // Função de notificação
+        function showNotification(message, type = 'info') {
+            // Remove notificações existentes
+            document.querySelectorAll('.notification').forEach(n => n.remove());
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Mostrar notificação
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            // Esconder notificação
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Funções do Dashboard
+        function refreshDashboard() {
+            showNotification('Atualizando dashboard...', 'info');
+            // Animar cards
+            document.querySelectorAll('.stat-card').forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'scale(1.05)';
+                    setTimeout(() => card.style.transform = 'scale(1)', 200);
+                }, index * 100);
+            });
+            setTimeout(() => showNotification('Dashboard atualizado!', 'success'), 1000);
+        }
+
+        function generateReport() {
+            showNotification('Gerando relatório executivo...', 'info');
+            setTimeout(() => showNotification('Relatório gerado! Pronto para download.', 'success'), 1500);
+        }
+
+        function quickOptimization() {
+            showNotification('Executando otimização rápida...', 'warning');
+            setTimeout(() => {
+                showNotification('Otimização rápida concluída! Economia de R$ 8.200.', 'success');
+                // Animar métricas
+                document.querySelectorAll('.stat-value').forEach(value => {
+                    value.style.color = '#4CAF50';
+                    setTimeout(() => value.style.color = '#ffffff', 1000);
+                });
+            }, 2000);
+        }
+
+        function emergencyMode() {
+            if (confirm('Ativar modo emergência? Isso priorizará cobertura mínima essencial.')) {
+                showNotification('Modo emergência ativado! Sistema priorizando cobertura essencial.', 'warning');
+            }
+        }
+
+        // Funções da seção Maquinistas
+        function exportMaquinistas() {
+            showNotification('Exportando lista de maquinistas...', 'info');
+            setTimeout(() => showNotification('Arquivo CSV gerado com sucesso!', 'success'), 1000);
+        }
+
+        function addMaquinista() {
+            const nome = prompt('Nome do novo maquinista:');
+            if (nome) {
+                showNotification(`Maquinista ${nome} adicionado com sucesso!`, 'success');
+            }
+        }
+
+        function viewMaquinista(id) {
+            showNotification(`Abrindo detalhes do maquinista ${id}...`, 'info');
+        }
+
+        function scheduleMaquinista(id) {
+            showNotification(`Escalando maquinista ${id} para próximo turno...`, 'success');
+        }
+
+        // Funções da seção Otimização
+        function runPrediction() {
+            showNotification('Executando predição com IA...', 'info');
+            setTimeout(() => showNotification('Predição concluída! Demanda atualizada para próximos 14 dias.', 'success'), 2500);
+        }
+
+        function runSimulation() {
+            showNotification('Simulando múltiplos cenários...', 'info');
+            setTimeout(() => showNotification('Simulação completa! 5 cenários analisados.', 'success'), 2000);
+        }
+
+        function optimizeSchedules() {
+            showNotification('Iniciando otimização de escalas...', 'warning');
+            setTimeout(() => {
+                showNotification('Otimização concluída! Economia de R$ 24.580 identificada.', 'success');
+                // Animar métricas
+                document.querySelectorAll('.stat-value').forEach(metric => {
+                    metric.style.transform = 'scale(1.1)';
+                    metric.style.color = '#4CAF50';
+                    setTimeout(() => {
+                        metric.style.transform = 'scale(1)';
+                        metric.style.color = '#ffffff';
+                    }, 500);
+                });
+            }, 3000);
+        }
+
+        function applySchedule() {
+            if (confirm('Aplicar escala otimizada? Isso substituirá a escala atual.')) {
+                showNotification('Escala aplicada com sucesso! Maquinistas notificados.', 'success');
+            }
+        }
+
+        function exportSchedule() {
+            showNotification('Exportando escala otimizada...', 'info');
+            setTimeout(() => showNotification('Escala exportada em formato PDF!', 'success'), 1000);
+        }
+
+        // Função auxiliar para atualizar valores dos sliders
+        function updateValue(elementId, value) {
+            document.getElementById(elementId).textContent = value;
+        }
+
+        // Filtros da tabela de maquinistas
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const statusFilter = document.getElementById('statusFilter');
+            const trechoFilter = document.getElementById('trechoFilter');
+            
+            if (searchInput) {
+                searchInput.addEventListener('input', filterTable);
+            }
+            if (statusFilter) {
+                statusFilter.addEventListener('change', filterTable);
+            }
+            if (trechoFilter) {
+                trechoFilter.addEventListener('change', filterTable);
+            }
+        });
+
+        function filterTable() {
+            const searchTerm = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const statusFilter = document.getElementById('statusFilter')?.value || '';
+            const trechoFilter = document.getElementById('trechoFilter')?.value || '';
+            
+            showNotification('Aplicando filtros...', 'info');
+            
+            // Simular filtragem
+            setTimeout(() => {
+                showNotification('Filtros aplicados! Resultados atualizados.', 'success');
+            }, 500);
+        }
+
+        // Animação dos indicadores de status
+        setInterval(() => {
+            document.querySelectorAll('.status-indicator').forEach(indicator => {
+                indicator.style.opacity = indicator.style.opacity === '0.3' ? '1' : '0.3';
+            });
+        }, 2000);
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            showNotification('Sistema VLI carregado com sucesso!', 'success');
+        });
+    </script>
+</body>
+</html>
