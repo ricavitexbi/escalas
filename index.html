@@ -613,6 +613,11 @@
                 <div class="nav-icon optimization-icon"></div>
                 <span>Otimização IA</span>
             </div>
+            
+            <div class="nav-item" onclick="showSection('resultados')" style="border-left: 3px solid #4CAF50;">
+                <div class="nav-icon optimization-icon"></div>
+                <span>📋 Resultados IA</span>
+            </div>
         </nav>
 
         <main class="content">
@@ -1061,7 +1066,7 @@
                             <small style="opacity: 0.7;">Carlos S.: 06h-14h | Maria O.: 14h-22h | Ana C.: 22h-06h</small>
                         </div>
                         <div style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <button class="btn btn-primary" style="flex: 1;" onclick="applySchedule()">💾 Aplicar Escala</button>
+                            <button class="btn btn-primary" style="flex: 1;" onclick="showOptimizationResults()">📋 Ver Resultados</button>
                             <button class="btn btn-secondary" style="flex: 1;" onclick="exportSchedule()">📄 Exportar</button>
                         </div>
                     </div>
@@ -1087,8 +1092,339 @@
                     </div>
                 </div>
             </div>
-        </main>
-    </div>
+
+            <!-- RESULTADOS DA OTIMIZAÇÃO SECTION -->
+            <div id="resultados" class="page-section">
+                <div class="page-header">
+                    <div>
+                        <h2 class="page-title">Resultados da Otimização</h2>
+                        <p class="page-subtitle">Escala otimizada para Hub BH-VIT - Próximas 24 horas</p>
+                    </div>
+                    <div style="display: flex; gap: 1rem;">
+                        <button class="btn btn-warning" onclick="notifyAllDrivers()">📢 Notificar Todos</button>
+                        <button class="btn btn-success" onclick="applyOptimizedSchedule()">💾 Aplicar Escala</button>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Economia Prevista</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">R$ 24.580</div>
+                        <div class="stat-change positive">
+                            ↗ 18% vs escala manual
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Eficiência da Escala</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">96.4%</div>
+                        <div class="stat-change positive">
+                            ↗ +3.2% vs baseline
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Conformidade Legal</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">100%</div>
+                        <div class="stat-change positive">
+                            ✓ 0 violações
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <span class="stat-title">Maquinistas Envolvidos</span>
+                            <div class="stat-icon"></div>
+                        </div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-change">
+                            Para trecho BH-VIT
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TIMELINE VISUAL DA ESCALA -->
+                <div class="widget" style="margin-bottom: 2rem;">
+                    <h3 class="widget-title">📅 Timeline da Escala Otimizada - 24 Horas</h3>
+                    <div style="overflow-x: auto; padding: 1rem 0;">
+                        <!-- Header com horários -->
+                        <div style="display: grid; grid-template-columns: 150px repeat(24, 60px); gap: 2px; margin-bottom: 1rem; min-width: 1600px;">
+                            <div style="font-weight: 600; color: #2196F3; text-align: center; padding: 0.5rem;">Maquinista</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">00h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">01h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">02h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">03h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">04h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">05h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">06h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">07h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">08h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">09h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">10h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">11h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">12h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">13h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">14h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">15h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">16h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">17h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">18h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">19h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">20h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">21h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">22h</div>
+                            <div style="text-align: center; font-size: 0.7rem; color: #b0bec5; padding: 0.5rem; background: rgba(33, 150, 243, 0.1); border-radius: 4px;">23h</div>
+                        </div>
+                        
+                        <!-- Linha Carlos Silva -->
+                        <div style="display: grid; grid-template-columns: 150px repeat(24, 60px); gap: 2px; margin-bottom: 0.5rem; min-width: 1600px; align-items: center;">
+                            <div style="font-size: 0.85rem; font-weight: 600; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; text-align: center; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                Carlos Silva<br>
+                                <small style="color: #4CAF50; font-size: 0.7rem;">MAQ-001</small>
+                            </div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5);"></div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5);"></div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5);"></div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5);"></div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5);"></div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Carlos', '05:00')">🚗</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">BH→VIT</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Carlos', '06:00-14:00')">VIT</div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Carlos', '14:00')">🚗</div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                        </div>
+
+                        <!-- Linha Maria Oliveira -->
+                        <div style="display: grid; grid-template-columns: 150px repeat(24, 60px); gap: 2px; margin-bottom: 0.5rem; min-width: 1600px; align-items: center;">
+                            <div style="font-size: 0.85rem; font-weight: 600; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; text-align: center; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                Maria Oliveira<br>
+                                <small style="color: #4CAF50; font-size: 0.7rem;">MAQ-002</small>
+                            </div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Maria', '13:00')">🚗</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">VIT→BH</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Maria', '14:00-22:00')">BH</div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Maria', '22:00')">🚗</div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                        </div>
+
+                        <!-- Linha João Pereira -->
+                        <div style="display: grid; grid-template-columns: 150px repeat(24, 60px); gap: 2px; margin-bottom: 0.5rem; min-width: 1600px; align-items: center;">
+                            <div style="font-size: 0.85rem; font-weight: 600; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; text-align: center; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                João Pereira<br>
+                                <small style="color: #f44336; font-size: 0.7rem;">MAQ-003</small>
+                            </div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                            <div style="background: rgba(158, 158, 158, 0.3); height: 40px; border-radius: 4px; border: 1px dashed rgba(158, 158, 158, 0.5); display: flex; align-items: center; justify-content: center; color: #9e9e9e; font-size: 0.6rem;">REST</div>
+                        </div>
+
+                        <!-- Linha Ana Carolina -->
+                        <div style="display: grid; grid-template-columns: 150px repeat(24, 60px); gap: 2px; margin-bottom: 1rem; min-width: 1600px; align-items: center;">
+                            <div style="font-size: 0.85rem; font-weight: 600; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; text-align: center; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                Ana Carolina<br>
+                                <small style="color: #4CAF50; font-size: 0.7rem;">MAQ-004</small>
+                            </div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">BH→VIT</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">WORK</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">VIT</div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Ana', '06:00')">🚗</div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: rgba(33, 150, 243, 0.2); height: 40px; border-radius: 4px; border: 1px dashed rgba(33, 150, 243, 0.5);"></div>
+                            <div style="background: linear-gradient(135deg, #FF9800, #f57c00); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.7rem; font-weight: 600; cursor: pointer;" onclick="showTransportDetails('Ana', '21:00')">🚗</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">START</div>
+                            <div style="background: linear-gradient(135deg, #4CAF50, #45a049); height: 40px; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.6rem; font-weight: 600; cursor: pointer;" onclick="showWorkDetails('Ana', '22:00-06:00')">WORK</div>
+                        </div>
+                        
+                        <!-- Legenda -->
+                        <div style="display: flex; gap: 2rem; flex-wrap: wrap; font-size: 0.8rem; margin-top: 1rem; padding: 1rem; background: rgba(26, 35, 50, 0.8); border-radius: 12px; border: 1px solid rgba(33, 150, 243, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: linear-gradient(135deg, #4CAF50, #45a049); border-radius: 4px;"></div>
+                                <span>Trabalho</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: linear-gradient(135deg, #FF9800, #f57c00); border-radius: 4px;"></div>
+                                <span>Transporte</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: rgba(158, 158, 158, 0.3); border: 1px dashed rgba(158, 158, 158, 0.5); border-radius: 4px;"></div>
+                                <span>Descanso</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <div style="width: 16px; height: 16px; background: rgba(33, 150, 243, 0.2); border: 1px dashed rgba(33, 150, 243, 0.5); border-radius: 4px;"></div>
+                                <span>Disponível</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AÇÕES RÁPIDAS E CONTATOS -->
+                <div class="widget-grid">
+                    <div class="widget">
+                        <h3 class="widget-title">📞 Contatos dos Maquinistas</h3>
+                        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                <div>
+                                    <div style="font-weight: 600;">Carlos Silva Santos</div>
+                                    <div style="font-size: 0.8rem; color: #b0bec5;">MAQ-001 • 06h-14h • (31) 99999-0001</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-success" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="callDriver('Carlos', '31999990001')">📞 Ligar</button>
+                                    <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="sendSMS('Carlos', '31999990001')">💬 SMS</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                <div>
+                                    <div style="font-weight: 600;">Maria Oliveira Costa</div>
+                                    <div style="font-size: 0.8rem; color: #b0bec5;">MAQ-002 • 14h-22h • (31) 99999-0002</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-success" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="callDriver('Maria', '31999990002')">📞 Ligar</button>
+                                    <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="sendSMS('Maria', '31999990002')">💬 SMS</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; border: 1px solid rgba(255, 193, 7, 0.3); border-left: 4px solid #FFC107;">
+                                <div>
+                                    <div style="font-weight: 600;">João Pereira Lima</div>
+                                    <div style="font-size: 0.8rem; color: #b0bec5;">MAQ-003 • EM DESCANSO • (31) 99999-0003</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" disabled>💤 Descanso</button>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.75rem; background: rgba(26, 35, 50, 0.8); border-radius: 8px; border: 1px solid rgba(33, 150, 243, 0.3);">
+                                <div>
+                                    <div style="font-weight: 600;">Ana Carolina Souza</div>
+                                    <div style="font-size: 0.8rem; color: #b0bec5;">MAQ-004 • 22h-06h • (31) 99999-0004</div>
+                                </div>
+                                <div style="display: flex; gap: 0.5rem;">
+                                    <button class="btn btn-success" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="callDriver('Ana', '31999990004')">📞 Ligar</button>
+                                    <button class="btn btn-primary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;" onclick="sendSMS('Ana', '31999990004')">💬 SMS</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="widget">
+                        <h3 class="widget-title">🚀 Ações de Implementação</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <button class="btn btn-warning" style="width: 100%; padding: 1rem;" onclick="notifyAllDrivers()">
+                                📢 Notificar Todos os Maquinistas<br>
+                                <small style="opacity: 0.8;">Enviar escala via SMS/WhatsApp</small>
+                            </button>
+                            <button class="btn btn-primary" style="width: 100%; padding: 1rem;" onclick="notifyTransport()">
+                                🚗 Acionar Transportes<br>
+                                <small style="opacity: 0.8;">Coordenar carros fixos e Uber</small>
+                            </button>
+                            <button class="btn btn-success" style="width: 100%; padding: 1rem;" onclick="applyOptimizedSchedule()">
+                                💾 Aplicar Escala Definitiva<br>
+                                <small style="opacity: 0.8;">Substituir escala atual</small>
+                            </button>
+                            <button class="btn btn-secondary" style="width: 100%; padding: 1rem;" onclick="exportFullSchedule()">
+                                📄 Exportar Documentação<br>
+                                <small style="opacity: 0.8;">PDF + Excel + Relatório</small>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <h3 class="widget-title">📊 Resumo da Otimização</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 12px; border: 1px solid rgba(76, 175, 80, 0.3);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #4CAF50;">R$ 24.580</div>
+                            <div style="color: #4CAF50; font-weight: 600;">Economia Mensal</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(33, 150, 243, 0.1); border-radius: 12px; border: 1px solid rgba(33, 150, 243, 0.3);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #2196F3;">96.4%</div>
+                            <div style="color: #2196F3; font-weight: 600;">Eficiência da IA</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(76, 175, 80, 0.1); border-radius: 12px; border: 1px solid rgba(76, 175, 80, 0.3);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #4CAF50;">100%</div>
+                            <div style="color: #4CAF50; font-weight: 600;">Conformidade Legal</div>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: rgba(255, 193, 7, 0.1); border-radius: 12px; border: 1px solid rgba(255, 193, 7, 0.3);">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: #FFC107;">2.1%</div>
+                            <div style="color: #FFC107; font-weight: 600;">Horas Improdutivas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     <script>
         // Função principal de navegação
@@ -1226,10 +1562,77 @@
             }, 3000);
         }
 
-        function applySchedule() {
-            if (confirm('Aplicar escala otimizada? Isso substituirá a escala atual.')) {
-                showNotification('Escala aplicada com sucesso! Maquinistas notificados.', 'success');
+        // Função para mostrar resultados da otimização
+        function showOptimizationResults() {
+            showSection('resultados');
+            showNotification('Carregando resultados da otimização...', 'info');
+            setTimeout(() => {
+                showNotification('Escala otimizada carregada! Pronta para implementação.', 'success');
+            }, 1000);
+        }
+
+        // Funções da nova seção de resultados
+        function showWorkDetails(maquinista, horario) {
+            showNotification(`Detalhes: ${maquinista} trabalhará ${horario} no trecho BH-VIT`, 'info');
+        }
+
+        function showTransportDetails(maquinista, horario) {
+            showNotification(`Transporte: ${maquinista} será transportado às ${horario}`, 'warning');
+        }
+
+        function callDriver(nome, telefone) {
+            if (confirm(`Ligar para ${nome}?\nTelefone: ${telefone}`)) {
+                showNotification(`Ligando para ${nome}...`, 'info');
+                setTimeout(() => {
+                    showNotification(`Chamada realizada para ${nome}`, 'success');
+                }, 2000);
             }
+        }
+
+        function sendSMS(nome, telefone) {
+            if (confirm(`Enviar SMS para ${nome} com detalhes da escala?`)) {
+                showNotification(`Enviando SMS para ${nome}...`, 'info');
+                setTimeout(() => {
+                    showNotification(`SMS enviado para ${nome} com sucesso!`, 'success');
+                }, 1500);
+            }
+        }
+
+        function notifyAllDrivers() {
+            if (confirm('Notificar todos os maquinistas sobre a nova escala?\n\nISTO IRÁ:\n• Enviar SMS para todos\n• Enviar detalhes via WhatsApp\n• Atualizar sistema interno')) {
+                showNotification('Enviando notificações para todos os maquinistas...', 'warning');
+                setTimeout(() => {
+                    showNotification('Todos os maquinistas foram notificados com sucesso!', 'success');
+                }, 3000);
+            }
+        }
+
+        function notifyTransport() {
+            showNotification('Acionando sistema de transporte...', 'info');
+            setTimeout(() => {
+                showNotification('Carros fixos acionados! Rotas otimizadas enviadas.', 'success');
+            }, 2000);
+        }
+
+        function applyOptimizedSchedule() {
+            if (confirm('CONFIRMAR APLICAÇÃO DA ESCALA OTIMIZADA?\n\n✅ Economia: R$ 24.580\n✅ Eficiência: 96.4%\n✅ Conformidade: 100%\n\nEsta ação substituirá a escala atual.')) {
+                showNotification('Aplicando escala otimizada...', 'warning');
+                setTimeout(() => {
+                    showNotification('Escala aplicada com sucesso! Sistema atualizado.', 'success');
+                    // Atualizar métricas do dashboard
+                    setTimeout(() => {
+                        showSection('dashboard');
+                        showNotification('Dashboard atualizado com novos dados!', 'info');
+                    }, 2000);
+                }, 3000);
+            }
+        }
+
+        function exportFullSchedule() {
+            showNotification('Gerando documentação completa...', 'info');
+            setTimeout(() => {
+                showNotification('Documentação gerada! PDF, Excel e Relatório prontos.', 'success');
+            }, 2000);
         }
 
         function exportSchedule() {
